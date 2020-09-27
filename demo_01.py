@@ -13,7 +13,7 @@ code_list_1 = QA.QA_fetch_stock_list().index.tolist()
 # 对所有的财报日期进行一个 shift, 这样, 基本可以保证对应的截面
 # 财报都已经公布
 df_finance = QA.QA_fetch_financial_report_adv(
-    code=code_list_1, start="2014-09-30", end="2020-09-26").data
+    code=code_list_1, start="2015-12-30", end="2020-09-26").data
 max_report_num = df_finance.groupby(level=1).apply(len).max()
 filter_se = df_finance.groupby(level=1).apply(len) == max_report_num
 code_list_2 = filter_se.loc[filter_se].index.tolist()

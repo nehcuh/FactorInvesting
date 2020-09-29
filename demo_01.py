@@ -25,7 +25,8 @@ code_list_2 = filter_se.loc[filter_se].index.tolist()
 se_value = df_finance.loc[(slice(None), code_list_2), "netAssetsPerShare"]
 
 # 股价获取
-dates_list = se_value.index.levels[0].unique().map(str).str.slice(0, 10).tolist()
+dates_list = se_value.index.levels[0].unique().map(
+    str).str.slice(0, 10).tolist()
 df_price = pd.DataFrame()
 drop_codes = set()
 for report_date in dates_list:
@@ -78,7 +79,8 @@ se_1 = bm_quantiles.loc[pct.index].stack()
 se_2 = df_weights.loc[pct.index].stack()
 se_3 = pct.stack()
 df = pd.concat(
-    [se_1.rename("quantiles"), se_2.rename("weights"), se_3.rename("pct_change")],
+    [se_1.rename("quantiles"), se_2.rename(
+        "weights"), se_3.rename("pct_change")],
     axis=1,
 )
 df["weighted_pct"] = df["weights"] * df["pct_change"]
